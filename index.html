@@ -21,6 +21,7 @@
             height: 70vh; /* Set height to 70% of viewport height */
             overflow: hidden; /* Hide overflow to prevent scrollbars */
             margin: auto; /* Center horizontally */
+            position: relative; /* Relative positioning for absolute controls */
         }
 
         .gif-container img {
@@ -30,8 +31,11 @@
         }
 
         audio {
-            width: 70%; /* Set width of audio controls */
-            margin: auto; /* Center horizontally */
+            width: 100%; /* Set width of audio controls */
+            position: absolute; /* Absolute positioning to overlay on top of the GIF */
+            bottom: 0;
+            left: 0;
+            opacity: 0.8; /* Set opacity for translucent effect */
         }
 
         .popup {
@@ -50,11 +54,11 @@
 <body>
     <div class="gif-container">
         <img src="https://raw.githubusercontent.com/Raw9k-ai/BEHAPPY/78c5b82ef48346d8e2618ed2924c857d2ff2ba80/samy-whisper-408p-32c.gif" alt="GIF">
+        <audio controls autoplay>
+            <source src="https://github.com/Raw9k-ai/BEHAPPY/raw/78c5b82ef48346d8e2618ed2924c857d2ff2ba80/Lyrical%EF%BC%9A%20Aao%20Milo%20Chalen%EF%BD%9C%20Jab%20We%20Met%EF%BD%9C%20Shahid%20Kapoor%2CKareena%20Kapoor%EF%BD%9C%20Pritam%2C%20Shaan%2C%20Ustad%20Sultan%20Khan%20%5Bu7hfwX81bY4%5D.m4a" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
     </div>
-    <audio controls autoplay>
-        <source src="https://github.com/Raw9k-ai/BEHAPPY/raw/78c5b82ef48346d8e2618ed2924c857d2ff2ba80/Lyrical%EF%BC%9A%20Aao%20Milo%20Chalen%EF%BD%9C%20Jab%20We%20Met%EF%BD%9C%20Shahid%20Kapoor%2CKareena%20Kapoor%EF%BD%9C%20Pritam%2C%20Shaan%2C%20Ustad%20Sultan%20Khan%20%5Bu7hfwX81bY4%5D.m4a" type="audio/mpeg">
-        Your browser does not support the audio element.
-    </audio>
 
     <div class="popup" id="popup">
         <p>Oops! Something went wrong. The audio couldn't be played.</p>
