@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BE HAPPY</title></title>
+    <title>BE HAPPY</title>
     <style>
         body {
             margin: 0;
             padding: 0;
             overflow: hidden;
-            background-color: black; /* Set background color to black */
+            background-color: black;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -17,25 +17,54 @@
         }
 
         .gif-container {
-            width: 100vw; /* Set width to 95% of viewport width */
-            height: 100vh; /* Set height to 70% of viewport height */
-            overflow: hidden; /* Hide overflow to prevent scrollbars */
-            margin: auto; /* Center horizontally */
-            position: relative; /* Relative positioning for absolute controls */
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            margin: auto;
+            position: relative;
         }
 
         .gif-container img {
-            width: 100%; /* Make the image fill the container horizontally */
-            height: 100%; /* Make the image fill the container vertically */
-            object-fit: cover; /* Scale the image while preserving its aspect ratio */
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
-        audio {
-            width: 30%; /* Set width of audio controls */
-            position: absolute; /* Absolute positioning to overlay on top of the GIF */
-            bottom: 0;
-            left: 0;
-            opacity: 0.6; /* Set opacity for translucent effect */
+        /* Custom play/pause button */
+        .audio-controls {
+            position: absolute;
+            bottom: 20px;
+            left: calc(50% - 25px); /* Center horizontally */
+            width: 50px;
+            height: 50px;
+            border-radius: 50%; /* Circular shape */
+            background-color: rgba(255, 255, 255, 0.6); /* White color with translucency */
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .play-triangle, .pause-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%); /* Center the elements within the circle */
+        }
+
+        .play-triangle {
+            width: 0;
+            height: 0;
+            border-top: 10px solid transparent;
+            border-bottom: 10px solid transparent;
+            border-left: 15px solid rgba(0, 0, 0, 0.8); /* Black color with translucency */
+        }
+
+        .pause-icon {
+            width: 20px;
+            height: 20px;
+            background-color: rgba(0, 0, 0, 0.8); /* Black color with translucency */
+            border-radius: 3px; /* Rounded corners */
         }
 
         .popup {
@@ -54,10 +83,11 @@
 <body>
     <div class="gif-container">
         <img src="https://raw.githubusercontent.com/Raw9k-ai/BEHAPPY/78c5b82ef48346d8e2618ed2924c857d2ff2ba80/samy-whisper-408p-32c.gif" alt="GIF">
-        <audio controls autoplay>
-            <source src="https://github.com/Raw9k-ai/BEHAPPY/raw/78c5b82ef48346d8e2618ed2924c857d2ff2ba80/Lyrical%EF%BC%9A%20Aao%20Milo%20Chalen%EF%BD%9C%20Jab%20We%20Met%EF%BD%9C%20Shahid%20Kapoor%2CKareena%20Kapoor%EF%BD%9C%20Pritam%2C%20Shaan%2C%20Ustad%20Sultan%20Khan%20%5Bu7hfwX81bY4%5D.m4a" type="audio/mpeg">
-            Your browser does not support the audio element.
-        </audio>
+    </div>
+
+    <div class="audio-controls" id="audioControls">
+        <div class="play-triangle"></div>
+        <div class="pause-icon"></div>
     </div>
 
     <div class="popup" id="popup">
@@ -66,7 +96,27 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            var audio = document.querySelector('audio');
+            var audio = new Audio('https://github.com/Raw9k-ai/BEHAPPY/raw/78c5b82ef48346d8e2618ed2924c857d2ff2ba80/Lyrical%EF%BC%9A%20Aao%20Milo%20Chalen%EF%BD%9C%20Jab%20We%20Met%EF%BD%9C%20Shahid%20Kapoor%2CKareena%20Kapoor%EF%BD%9C%20Pritam%2C%20Shaan%2C%20Ustad%20Sultan%20Khan%20%5Bu7hfwX81bY4%5D.m4a');
+
+            var audioControls = document.getElementById('audioControls');
+            var playTriangle = document.querySelector('.play-triangle');
+            var pauseIcon = document.querySelector('.pause-icon');
+
+            // Function to toggle play/pause icon
+            function togglePlayPause() {
+                if (audio.paused) {
+                    audio.play();
+                    playTriangle.style.display = 'none'; // Hide triangle
+                    pauseIcon.style.display = 'block'; // Show pause icon
+                } else {
+                    audio.pause();
+                    playTriangle.style.display = 'block'; // Show triangle
+                    pauseIcon.style.display = 'none'; // Hide pause icon
+                }
+            }
+
+            // Click event listener for play/pause button
+            audioControls.addEventListener('click', togglePlayPause);
 
             audio.onplay = function() {
                 document.getElementById('popup').style.display = 'none';
