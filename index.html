@@ -97,7 +97,19 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            var audio = new Audio('https://github.com/Raw9k-ai/BEHAPPY/raw/78c5b82ef48346d8e2618ed2924c857d2ff2ba80/Lyrical%EF%BC%9A%20Aao%20Milo%20Chalen%EF%BD%9C%20Jab%20We%20Met%EF%BD%9C%20Shahid%20Kapoor%2CKareena%20Kapoor%EF%BD%9C%20Pritam%2C%20Shaan%2C%20Ustad%20Sultan%20Khan%20%5Bu7hfwX81bY4%5D.m4a');
+            var songs = [
+                'https://raw.githubusercontent.com/Raw9k-ai/BEHAPPY/ad236c32a58f284cd676138506dd76a3554e7b1c/Lyrical%EF%BC%9A%20Aao%20Milo%20Chalen%EF%BD%9C%20Jab%20We%20Met%EF%BD%9C%20Shahid%20Kapoor%2CKareena%20Kapoor%EF%BD%9C%20Pritam%2C%20Shaan%2C%20Ustad%20Sultan%20Khan%20%5Bu7hfwX81bY4%5D.m4a',
+                'https://raw.githubusercontent.com/Raw9k-ai/BEHAPPY/ad236c32a58f284cd676138506dd76a3554e7b1c/Sai%20Abhyankkar%20-%20Katchi%20Sera%20(Music%20Video)%20%EF%BD%9C%20Samyuktha%20%EF%BD%9C%20Ken%20Royson%20%EF%BD%9C%20Think%20Indie%20%5BVU23OPQ1Pmc%5D.m4a',
+                'https://raw.githubusercontent.com/Raw9k-ai/BEHAPPY/ad236c32a58f284cd676138506dd76a3554e7b1c/Sulfa%20(%20Official%20Video)%20Vikas%20Dhani%20Aala%20%EF%BD%9C%20Sapna%20Choudhary%20%EF%BD%9C%20Monty%20Sehrawat%20%EF%BD%9C%20New%20Haryanvi%20Song%202023%20%5BLwnzWAlhRac%5D.m4a',
+                'https://raw.githubusercontent.com/Raw9k-ai/BEHAPPY/ad236c32a58f284cd676138506dd76a3554e7b1c/Tor%20Mon%20Paray%20%EF%BD%9C%20Ayon%20Chaklader%20ft%20Mahdi%20Sultan%20%EF%BD%9C%20Jisan%20Khan%20Shuvo%20%EF%BD%9C%20Pammi%20Multimedia%20%EF%BD%9C%20Bangla%20Song%20%5BFAt1d11UOg8%5D.m4a',
+                'https://raw.githubusercontent.com/Raw9k-ai/BEHAPPY/ad236c32a58f284cd676138506dd76a3554e7b1c/Heroine%20%5BF7tRt7EuPJQ%5D.m4a',
+                'https://raw.githubusercontent.com/Raw9k-ai/BEHAPPY/ad236c32a58f284cd676138506dd76a3554e7b1c/Bhagatt%20Aadmi%20Tha%20%EF%BC%9A%20Masoom%20Sharma%20%EF%BD%9C%20Pranjal%20Dahiya%2C%20Aman%20Jaji%20%EF%BD%9C%20New%20Haryanvi%20Songs%20Haryanavi%202022%20%5BEj0R4MnLv8c%5D.m4a',
+                'https://raw.githubusercontent.com/Raw9k-ai/BEHAPPY/ad236c32a58f284cd676138506dd76a3554e7b1c/Baje%20Shobhab%20I%20Prithwi%20Raj%20ft%20%20Rehaan%20I%20Jilapi%20Originals%20I%202018%20%5Bo61DHzy-5Js%5D.m4a'
+                // Add additional song links here if needed
+            ];
+
+            var randomIndex = Math.floor(Math.random() * songs.length);
+            var audio = new Audio(songs[randomIndex]);
 
             var audioControls = document.getElementById('audioControls');
             var playTriangle = document.querySelector('.play-triangle');
@@ -118,14 +130,6 @@
 
             // Click event listener for play/pause button
             audioControls.addEventListener('click', togglePlayPause);
-
-            audio.onplay = function() {
-                document.getElementById('popup').style.display = 'none';
-            }
-
-            audio.onerror = function() {
-                document.getElementById('popup').style.display = 'block';
-            }
         });
     </script>
 </body>
